@@ -3,7 +3,10 @@ const todoInput = document.querySelector("#todo-input")
 const todoUl = document.querySelector("#todo-ul")
 
 let todos =JSON.parse(localStorage.getItem("TODOS"))
-       console.log(todos);
+
+    function a () {
+        todos
+    }
 
 
 
