@@ -2,11 +2,14 @@ const addBtn = document.getElementById("todo-button")
 const todoInput = document.querySelector("#todo-input")
 const todoUl = document.querySelector("#todo-ul")
 
-let todos =JSON.parse(localStorage.getItem("TODOS"))
+let todos =JSON.parse(localStorage.getItem("TODOS")) || []
 
-    function a () {
-        todos
+    function renderSavedTodos () {
+        todos.forEach((todo) => {
+            createListElement(todo)
+        })
     }
+    renderSavedTodos()
 
 
 
@@ -26,7 +29,7 @@ addBtn.addEventListener("click", function() {
     }
 })
 
-const createListElement = (newTodo) => {
+function createListElement (newTodo)  {
     const {id,text,completed} =newTodo
     const li = document.createElement("li")
     li.setAttribute("id", id)
@@ -50,8 +53,12 @@ const createListElement = (newTodo) => {
 }
 
 todoUl.addEventListener("click", (e)=> {
+   const id = e.target.parentElement.getAttribute("id")
     if(e.target.classList.contains("fa-trash")) {
         e.target.parentNode.remove()
+
+        todos = todos.filter((todo)=> todo.id !== Number(id))
+        localStorage.setItem("TODOS", JSON.stringify(todos))
     }
     if(e.target.classList.contains("fa-check")) {
         e.target.parentElement.classList.toggle("checked")
