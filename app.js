@@ -2,6 +2,7 @@ const addBtn = document.getElementById("todo-button")
 const todoInput = document.querySelector("#todo-input")
 const todoUl = document.querySelector("#todo-ul")
 
+        
 
 
 addBtn.addEventListener("click", function() {
@@ -11,26 +12,27 @@ addBtn.addEventListener("click", function() {
         const newTodo = {
             id: new Date().getTime(),
             text: todoInput.value,
-            completed: true
+            completed: false
         };
-        const {id,text,completed} =newTodo
        createListElement(newTodo)
        todoInput.value = ""
     }
 })
 
 const createListElement = (newTodo) => {
+    const {id,text,completed} =newTodo
     const li = document.createElement("li")
-    li.setAttribute("id", newTodo.id)
+    li.setAttribute("id", id)
 
-    completed ? li.classList.add("completed") : ""
+    // completed ? li.classList.add("completed") : ""
+    completed && li.classList.add("completed")
 
     const okIcon = document.createElement("i")
     okIcon.setAttribute("class", "fas fa-check")
     li.appendChild(okIcon)
 
      const p = document.createElement("p");
-     const pTextNode = document.createTextNode(newTodo.text);
+     const pTextNode = document.createTextNode(text);
      p.appendChild(pTextNode);
      li.appendChild(p);
 
@@ -39,6 +41,16 @@ const createListElement = (newTodo) => {
     li.appendChild(deleteIcon)
     todoUl.appendChild(li)
 }
+
+todoUl.addEventListener("click", (e)=> {
+    if(e.target.classList.contains("fa-trash")) {
+        e.target.parentNode.remove()
+    }
+    if(e.target.classList.contains("fa-check")) {
+        e.target.parentElement.classList.toggle("checked")
+
+    }
+})
 
 todoInput.addEventListener("keypress", (e)=> {
     // console.log(e)
@@ -50,3 +62,4 @@ todoInput.addEventListener("keypress", (e)=> {
 window.onload = function() {
     todoInput.focus()
 }
+
