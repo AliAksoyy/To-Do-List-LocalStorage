@@ -14,6 +14,7 @@ addBtn.addEventListener("click", function() {
             completed: false
         };
        createListElement(newTodo)
+       todoInput.value = ""
     }
 })
 
@@ -33,9 +34,6 @@ const createListElement = (newTodo) => {
     const deleteIcon = document.createElement("i")
     deleteIcon.setAttribute("class", "fas fa-trash")
     li.appendChild(deleteIcon)
-
-   
-
     todoUl.appendChild(li)
     
 
