@@ -11,8 +11,9 @@ addBtn.addEventListener("click", function() {
         const newTodo = {
             id: new Date().getTime(),
             text: todoInput.value,
-            completed: false
+            completed: true
         };
+        const {id,text,completed} =newTodo
        createListElement(newTodo)
        todoInput.value = ""
     }
@@ -21,6 +22,8 @@ addBtn.addEventListener("click", function() {
 const createListElement = (newTodo) => {
     const li = document.createElement("li")
     li.setAttribute("id", newTodo.id)
+
+    completed ? li.classList.add("completed") : ""
 
     const okIcon = document.createElement("i")
     okIcon.setAttribute("class", "fas fa-check")
@@ -35,7 +38,15 @@ const createListElement = (newTodo) => {
     deleteIcon.setAttribute("class", "fas fa-trash")
     li.appendChild(deleteIcon)
     todoUl.appendChild(li)
-    
+}
 
+todoInput.addEventListener("keypress", (e)=> {
+    // console.log(e)
+    if(e.which === 13) {
+        addBtn.click()
+    }
+})
 
+window.onload = function() {
+    todoInput.focus()
 }
