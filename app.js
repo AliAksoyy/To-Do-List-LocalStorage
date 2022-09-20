@@ -2,7 +2,9 @@ const addBtn = document.getElementById("todo-button")
 const todoInput = document.querySelector("#todo-input")
 const todoUl = document.querySelector("#todo-ul")
 
-        
+let todos =JSON.parse(localStorage.getItem("TODOS"))
+       console.log(todos);
+
 
 
 addBtn.addEventListener("click", function() {
@@ -15,6 +17,8 @@ addBtn.addEventListener("click", function() {
             completed: false
         };
        createListElement(newTodo)
+       todos.push(newTodo)
+       localStorage.setItem("TODOS",JSON.stringify(todos))
        todoInput.value = ""
     }
 })
