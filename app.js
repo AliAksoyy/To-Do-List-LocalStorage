@@ -31,8 +31,8 @@ addBtn.addEventListener("click", ()=> {
         console.log(li)
         li.className = "li"
         const okIcon = document.createElement("i")
-        okIcon.innerHTML = `<i class="fa-solid fa-check"></i>`
-        // okIcon.classList.add("fa-check")
+       
+        okIcon.className = "fas fa-check"
         const texter = document.createElement("p")
         const content = document.createTextNode(`${todoInput.value}`)
         texter.appendChild(content)
