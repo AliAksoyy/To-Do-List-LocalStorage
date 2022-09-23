@@ -48,6 +48,7 @@ addBtn.addEventListener("click", ()=> {
         li.appendChild(deleteIcon)
         todoUl.appendChild(li)
         console.log(li)
+        localStorage.setItem("todos", JSON.stringify(todos))
         }
 
         todoInput.onkeyup = (e)=> {
@@ -63,8 +64,26 @@ addBtn.addEventListener("click", ()=> {
 
             if(e.target.classList.contains("fa-trash")) {
                 e.target.parentElement.remove()
+
+                todos = todos.filter((a) => {
+                  todos.id != a.id
+                  console.log(todos);
+                  localStorage.setItem("todos", JSON.stringify(todos));
+                });
             }
-         });
+
+            if(e.target.classList.contains("fa-check")) {
+                e.target.parentElement.classList.toggle("checked")
+                
+            }
+           
+        })
+
+            
+                
+
+            
+         
   
   
         
