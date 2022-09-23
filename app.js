@@ -4,7 +4,7 @@ const todoUl = document.querySelector("#todo-ul")
 
 
 let todos =JSON.parse(localStorage.getItem("todos")) || [];
-console.log(todos)
+// console.log(todos)
 renderSave()
 
 function renderSave() {
@@ -84,6 +84,18 @@ addBtn.addEventListener("click", ()=> {
 
             }else if(e.target.classList.contains("fa-check")) {
                  e.target.parentElement.classList.toggle("checked");
+
+                for(let item of todos){
+                    console.log(item)
+                e.target.parentElement.classList.contains("checked")
+                  ? (item.completed = true)
+                  : (item.completed = false);
+
+                }
+                    localStorage.setItem("todos", JSON.stringify(todos))
+
+                    
+                
                 
             }
 
