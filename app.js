@@ -28,6 +28,7 @@ addBtn.addEventListener("click", ()=> {
         const li = document.createElement("li")
         // li.id = newTodo.id
         li.setAttribute("id", id)
+        console.log(li)
         li.className = "li"
         const okIcon = document.createElement("i")
         okIcon.innerHTML = `<i class="fa-solid fa-check"></i>`
