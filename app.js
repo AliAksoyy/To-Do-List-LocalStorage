@@ -6,7 +6,7 @@ const todoUl = document.querySelector("#todo-ul")
 let todos =JSON.parse(localStorage.getItem("todos")) || [];
 
 
-document.querySelector("#todo-ul").innerText = todos
+// document.querySelector("#todo-ul").innerText = todos
 
 
 addBtn.addEventListener("click", ()=> {
@@ -16,18 +16,61 @@ addBtn.addEventListener("click", ()=> {
     }else {
         let newTodo = {
 
-            id:new Date().getTime(),
-            text:todoInput.value,
-            completed:false
+            id: new Date().getTime(),
+            text: todoInput.value,
+            completed: false
         };
+
+        let {id,text,completed} = newTodo
         todos.push(newTodo)
         localStorage.setItem("todos", JSON.stringify(todos))
 
         const li = document.createElement("li")
-        console.log(li)
-        li.className = 
+        // console.log(li)
+        li.className = "li"
+        const okIcon = document.createElement("i")
+        okIcon.innerHTML = `<i class="fa-solid fa-check"></i>`
+        // okIcon.classList.add("fa-check")
+        const texter = document.createElement("p")
+        const content = document.createTextNode(`${todoInput.value}`)
+        texter.appendChild(content)
+        const deleteIcon = document.createElement("i")
+        deleteIcon.innerHTML = `<i class="fa-solid fa-trash"></i>`
+        // deleteIcon.classList.add("fa-trash")
+        li.appendChild(okIcon)
+        li.appendChild(texter)
+        li.appendChild(deleteIcon)
+        todoUl.appendChild(li)
+
+        todoInput.value = ""
+
+          okIcon.addEventListener("click", (e) => {
+            // e.target.parentElement.classList.toggle("checked")
+           e.target.parentElement.parentElement.classList.toggle("checked")
+
+            
+
+          });
+
+          deleteIcon.onclick = (e)=> {
+          const ide = e.target.parentElement.parentElement.remove()
+           
+           id = todos.filter((item)=> {
+                item.id != ide
+           })
+
+           localStorage.setItem("todos", JSON.stringify(todos))
+
+            
+          }
+
+
+
 
     }
+
+  
+
 
 })
 
