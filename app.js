@@ -48,6 +48,15 @@ addBtn.addEventListener("click", ()=> {
         todoUl.appendChild(li)
 
         }
+
+        todoInput.onkeyup = (e)=> {
+            if(e.which ==13) {
+                addBtn.click()
+            }
+        }
+        window.onload = ()=> {
+            todoInput.focus()
+        }
   
   
         //   okIcon.addEventListener("click", (e) => {
