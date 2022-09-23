@@ -19,8 +19,12 @@ addBtn.addEventListener("click", ()=> {
             completed: false
         };
         createListElement(newTodo)
+        todos.push(newTodo)
+        console.log(todos)
         todoInput.value = "";
 
+
+        
         todoUl.addEventListener("click",(e)=> {
 
         if(e.target.classList.contains("fa-check")) {
@@ -33,8 +37,6 @@ addBtn.addEventListener("click", ()=> {
                 e.target.parentElement.remove()
             }
         }
-
-
 
           }
     })
