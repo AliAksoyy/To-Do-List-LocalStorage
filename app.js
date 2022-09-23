@@ -4,6 +4,16 @@ const todoUl = document.querySelector("#todo-ul")
 
 
 let todos =JSON.parse(localStorage.getItem("todos")) || [];
+console.log(todos)
+renderSave()
+
+function renderSave() {
+    todos.forEach((item)=> {
+        createListElement(item)
+    })
+}
+
+
 
 
 
@@ -20,7 +30,9 @@ addBtn.addEventListener("click", ()=> {
         };
         createListElement(newTodo)
         todos.push(newTodo)
-        console.log(todos)
+        localStorage.setItem("todos", JSON.stringify(todos))
+        console.log(todos);
+
         todoInput.value = "";
 
        
