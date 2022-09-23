@@ -26,7 +26,8 @@ addBtn.addEventListener("click", ()=> {
         localStorage.setItem("todos", JSON.stringify(todos))
 
         const li = document.createElement("li")
-        // console.log(li)
+        // li.id = newTodo.id
+        li.setAttribute("id", id)
         li.className = "li"
         const okIcon = document.createElement("i")
         okIcon.innerHTML = `<i class="fa-solid fa-check"></i>`
