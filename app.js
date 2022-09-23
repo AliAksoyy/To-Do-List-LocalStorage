@@ -20,63 +20,52 @@ addBtn.addEventListener("click", ()=> {
             text: todoInput.value,
             completed: false
         };
+        createListElement(newTodo)
+        todoInput.value = "";
 
-        let {id,text,completed} = newTodo
-        todos.push(newTodo)
-        localStorage.setItem("todos", JSON.stringify(todos))
+       
+        
+          }
+    })
 
+
+
+ function createListElement(newTodo) {
         const li = document.createElement("li")
-        // li.id = newTodo.id
-        li.setAttribute("id", id)
+        li.setAttribute("id", newTodo.id)
         console.log(li)
         li.className = "li"
         const okIcon = document.createElement("i")
-       
         okIcon.className = "fas fa-check"
         const texter = document.createElement("p")
-        const content = document.createTextNode(`${todoInput.value}`)
+        const content = document.createTextNode(newTodo.text)
         texter.appendChild(content)
         const deleteIcon = document.createElement("i")
-        deleteIcon.innerHTML = `<i class="fa-solid fa-trash"></i>`
-        // deleteIcon.classList.add("fa-trash")
+        deleteIcon.className = "fa-solid fa-trash"
         li.appendChild(okIcon)
         li.appendChild(texter)
         li.appendChild(deleteIcon)
         todoUl.appendChild(li)
 
-        todoInput.value = ""
-
-          okIcon.addEventListener("click", (e) => {
-            // e.target.parentElement.classList.toggle("checked")
-           e.target.parentElement.parentElement.classList.toggle("checked")
-
-            
-
-          });
-
-          deleteIcon.onclick = (e)=> {
-          const ide = e.target.parentElement.parentElement.remove()
-           
-           id = todos.filter((item)=> {
-                item.id != ide
-           })
-
-           localStorage.setItem("todos", JSON.stringify(todos))
-
-            
-          }
-
-
-
-
-    }
-
+        }
   
+  
+        //   okIcon.addEventListener("click", (e) => {
+        //     // e.target.parentElement.classList.toggle("checked")
+        //    e.target.parentElement.parentElement.classList.toggle("checked")
 
+            
 
-})
+        //   });
 
+        //   deleteIcon.onclick = (e)=> {
+        //   const ide = e.target.parentElement.parentElement.remove()
+           
+        //    id = todos.filter((item)=> {
+        //         item.id != ide
+        //    })
 
+        //    localStorage.setItem("todos", JSON.stringify(todos))
 
 
 
