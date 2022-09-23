@@ -59,7 +59,7 @@ addBtn.addEventListener("click", ()=> {
         li.appendChild(texter)
         li.appendChild(deleteIcon)
         todoUl.appendChild(li)
-        console.log(li)
+        // console.log(li)
         localStorage.setItem("todos", JSON.stringify(todos))
         }
 
@@ -74,20 +74,20 @@ addBtn.addEventListener("click", ()=> {
 
         todoUl.addEventListener("click", (e) => {
 
+            const ID = e.target.parentElement.getAttribute("id")
             if(e.target.classList.contains("fa-trash")) {
                 e.target.parentElement.remove()
 
-                todos = todos.filter((a) => {
-                  todos.id != a.id
-                  console.log(todos);
-                  localStorage.setItem("todos", JSON.stringify(todos));
-                });
-            }
+                todos = todos.filter((a)=> a.id !=ID)
+                localStorage.setItem("todos",JSON.stringify(todos))
+                console.log(todos)
 
-            if(e.target.classList.contains("fa-check")) {
-                e.target.parentElement.classList.toggle("checked")
+            }else if(e.target.classList.contains("fa-check")) {
+                 e.target.parentElement.classList.toggle("checked");
                 
             }
+
+            
            
         })
 
