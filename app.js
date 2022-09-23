@@ -16,7 +16,7 @@ addBtn.addEventListener("click", ()=> {
 
             id: new Date().getTime(),
             text: todoInput.value,
-            completed: false
+            completed: true
         };
         createListElement(newTodo)
         todos.push(newTodo)
@@ -24,27 +24,16 @@ addBtn.addEventListener("click", ()=> {
         todoInput.value = "";
 
 
-        
-        todoUl.addEventListener("click",(e)=> {
-
-        if(e.target.classList.contains("fa-check")) {
-            e.target.parentElement.classList.toggle("checked")
-        }
-        })
-
-        todoUl.onclick = (e)=> {
-            if(e.target.classList.contains("fa-trash")) {
-                e.target.parentElement.remove()
-            }
-        }
-
           }
     })
 
  function createListElement(newTodo) {
         const li = document.createElement("li")
         li.setAttribute("id", newTodo.id)
-        console.log(li)
+      
+        // newTodo.completed ? li.classList.add("completed") : ""
+        newTodo.completed && li.classList.add("checked")
+
         const okIcon = document.createElement("i")
         okIcon.className = "fas fa-check"
         const texter = document.createElement("p")
@@ -56,7 +45,7 @@ addBtn.addEventListener("click", ()=> {
         li.appendChild(texter)
         li.appendChild(deleteIcon)
         todoUl.appendChild(li)
-
+        console.log(li)
         }
 
         todoInput.onkeyup = (e)=> {
