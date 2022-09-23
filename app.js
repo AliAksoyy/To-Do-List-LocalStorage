@@ -1,3 +1,15 @@
+const addBtn = document.querySelector("#todo-button")
+const todoInput = document.querySelector("#todo-input")
+const todoUl = document.querySelector("#todo-ul")
+
+
+let todos =JSON.parse(localStorage.getItem("todos")) || [];
+
+
+
+addBtn.addEventListener("click", ()=> {
+
+})
 
 
 
