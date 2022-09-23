@@ -23,18 +23,22 @@ addBtn.addEventListener("click", ()=> {
         createListElement(newTodo)
         todoInput.value = "";
 
-       
-        
+        todoUl.addEventListener("click",(e)=> {
+
+        if(e.target.classList.contains("fa-check")) {
+            e.target.parentElement.classList.toggle("checked")
+        }
+        })
+
+
+
           }
     })
-
-
 
  function createListElement(newTodo) {
         const li = document.createElement("li")
         li.setAttribute("id", newTodo.id)
         console.log(li)
-        li.className = "li"
         const okIcon = document.createElement("i")
         okIcon.className = "fas fa-check"
         const texter = document.createElement("p")
