@@ -16,28 +16,30 @@ addBtn.addEventListener("click", ()=> {
 
             id: new Date().getTime(),
             text: todoInput.value,
-            completed: true
+            completed: false
         };
         createListElement(newTodo)
         todos.push(newTodo)
         console.log(todos)
         todoInput.value = "";
 
-
+       
           }
     })
 
  function createListElement(newTodo) {
+        const { id, text, completed } = newTodo;
+
         const li = document.createElement("li")
-        li.setAttribute("id", newTodo.id)
+        li.setAttribute("id",id)
       
         // newTodo.completed ? li.classList.add("completed") : ""
-        newTodo.completed && li.classList.add("checked")
+        completed && li.classList.add("checked")
 
         const okIcon = document.createElement("i")
         okIcon.className = "fas fa-check"
         const texter = document.createElement("p")
-        const content = document.createTextNode(newTodo.text)
+        const content = document.createTextNode(text)
         texter.appendChild(content)
         const deleteIcon = document.createElement("i")
         deleteIcon.className = "fa-solid fa-trash"
@@ -56,6 +58,13 @@ addBtn.addEventListener("click", ()=> {
         window.onload = ()=> {
             todoInput.focus()
         }
+
+        todoUl.addEventListener("click", (e) => {
+
+            if(e.target.classList.contains("fa-trash")) {
+                e.target.parentElement.remove()
+            }
+         });
   
   
         
