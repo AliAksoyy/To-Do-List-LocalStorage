@@ -6,8 +6,28 @@ const todoUl = document.querySelector("#todo-ul")
 let todos =JSON.parse(localStorage.getItem("todos")) || [];
 
 
+document.querySelector("#todo-ul").innerText = todos
+
 
 addBtn.addEventListener("click", ()=> {
+
+    if(!todoInput.value) {
+        alert("Something write pleas")
+    }else {
+        let newTodo = {
+
+            id:new Date().getTime(),
+            text:todoInput.value,
+            completed:false
+        };
+        todos.push(newTodo)
+        localStorage.setItem("todos", JSON.stringify(todos))
+
+        const li = document.createElement("li")
+        console.log(li)
+        li.className = 
+
+    }
 
 })
 
