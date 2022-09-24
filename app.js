@@ -84,23 +84,22 @@ addBtn.addEventListener("click", ()=> {
 
             }else if(e.target.classList.contains("fa-check")) {
                  e.target.parentElement.classList.toggle("checked");
-
-                for(let item of todos){
-                    console.log(item)
-                e.target.parentElement.classList.contains("checked")
-                  ? (item.completed = true)
-                  : (item.completed = false);
-
-                }
-                    localStorage.setItem("todos", JSON.stringify(todos))
-
                     
+                    // todos dizisindeki ilgili elementin completed kismini guncelle
+                    todos.map((todo, index) => {
+                      if (todo.id == ID) {
+                        todos[index].completed = !todos[index].completed;
+                      }
+                    });
+                    console.log(todos);
+
+                    //?todos dizisinin son halini localStorage'e sakla
+                    localStorage.setItem("TODOS", JSON.stringify(todos));                  
                 
                 
             }
 
-            
-           
+
         })
 
             
