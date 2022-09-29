@@ -102,11 +102,3 @@ addBtn.addEventListener("click", ()=> {
 
         })
 
-            
-                
-
-            
-         
-  
-  
-        
